@@ -1,8 +1,2 @@
 question 1
 question 2
-
-
-
-
-ANswer 1 
-answer 2
