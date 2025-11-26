@@ -1,16 +1,2 @@
 here
 there
-
-Jung ldni hai 
-
-<<<<<<< HEAD
-ek gf bnwa de 
-=======
-
-
-
-file gaurav
->>>>>>> 46593827195f726bfe028e1e3777b21e81e5da8b
-
-
-htt ja 
