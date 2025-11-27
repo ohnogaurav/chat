@@ -1,2 +1,19 @@
-done
-ok
+.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+
+.\bin\windows\kafka-server-start.bat .\config\server.properties
+
+
+
+
+1. Zookeeper Start - .\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+2. Server Start - .\bin\windows\kafka-server-start.bat .\config\server.properties
+
+3. Create - .\bin\windows\kafka-topics.bat --create --bootstrap-server localhost:9092 --topic def
+
+Partition - .\bin\windows\kafka-topics.bat --create --bootstrap-server localhost:9092 --partitions 3 --topic def 
+
+4.  Producer - .\bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic def
+
+5.  Consumer - .\bin\windows\kafka-console-consumer.bat --topic abc --bootstrap-server localhost:9092 --from-beginning
