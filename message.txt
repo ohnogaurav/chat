@@ -17,3 +17,8 @@ Partition - .\bin\windows\kafka-topics.bat --create --bootstrap-server localhost
 4.  Producer - .\bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic def
 
 5.  Consumer - .\bin\windows\kafka-console-consumer.bat --topic abc --bootstrap-server localhost:9092 --from-beginning
+
+
+
+
+https://chatgpt.com/share/6927ccd2-91dc-8004-9330-9152f516461e
