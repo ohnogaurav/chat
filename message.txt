@@ -29,112 +29,155 @@ pass ---> o4sLxxoSmNdRhIZb
 
 
 
+# 🤖 **ContextRetail AI — The Smart Store Assistant**
 
-🚀 TrendSpotter: The Automated Insight Engine
-=============================================
+> **Tagline:** A context-aware AI shopping assistant that combines user behavior, store data, and real-time environmental signals to deliver highly personalized recommendations, just like a human retail associate, but smarter.
 
-> **Tagline:** An event-driven data pipeline that converts raw CSV logs into executive-ready PDF reports with AI-generated narratives in under 30 seconds.
+---
 
-1\. The Problem (Real World Scenario)
--------------------------------------
+## 1️⃣ The Problem (Real-World Scenario)
 
-**Context:** During my research into AdTech workflows, I identified a major inefficiency: Account Managers waste 4-6 hours every week manually downloading CSVs and taking screenshots to create "Weekly Performance Reports."
+Modern brick-and-mortar stores have *zero personalization.*
 
-**The Pain Point:** This manual process is slow, boring, and error-prone. If a campaign is wasting budget, the client might not know for days because the reporting lag is too high.
+If a customer walks into Starbucks:
 
-> **My Solution:** I built **TrendSpotter**, an event-driven system. You simply drop a raw file into a folder, and 30 seconds later, you receive a fully analyzed, executive-ready PDF report in your email.
+* No one remembers their last order
+* No one knows whether they prefer sweet or strong
+* No one knows if they’re cold, sick, tired, or just browsing
 
-2\. Expected End Result
------------------------
+Meanwhile, online platforms like Amazon use behavioral and contextual signals to boost conversions — *physical stores don’t.*
 
-**For the User:**
+> **My Solution:** Build an AI retail assistant that behaves like a real store associate, capable of remembering users, understanding their needs, and making *contextually smart product suggestions* in real time.
 
-*   **Input:** Drop a raw CSV file into the folder.
-    
-*   **Action:** Wait 30 seconds.
-    
-*   **Output:** Receive a professionally formatted PDF via email containing:
-    
-    *   Week-over-Week growth charts.
-        
-    *   A list of detected anomalies (e.g., "Traffic dropped 40% in Miami").
-        
-    *   An AI-written paragraph explaining _why_ the drop happened (correlated with Weather API).
-        
+---
 
-3\. Technical Approach
-----------------------
+## 2️⃣ Expected User Experience
 
-I wanted to challenge myself to build a system that is **Production-Ready**, moving beyond simple scripts to a robust **ETL (Extract, Transform, Load)** pipeline.
+**For End Customers:**
 
-**System Architecture:**
+* No onboarding
+* No forms
+* No manual input about preferences
 
-1.  **Ingestion (Event-Driven):** A Python watchdog script listens for file changes in real-time.
-    
-2.  **Decision:** I chose **Polars over Pandas** because it handles larger datasets faster and enforces a stricter schema, which reduces bugs in production.
-    
-3.  **Anomaly Detection:** I implemented the **Isolation Forest** algorithm (Scikit-Learn) to mathematically identify "weird" data points (outliers) rather than just using hard-coded if/else rules.
-    
-4.  **Generative AI (The Analyst):**
-    
-    *   We pass the anomaly metadata to **Google Gemini 1.5 Pro**.
-        
-    *   We use a **Few-Shot Prompt** technique to force the AI to sound like a Senior Data Analyst.
-        
-    *   _Guardrail:_ I implemented a validation step to ensure the AI's math matches the Polars dataframe to prevent hallucinations.
-        
-5.  **Reporting:** WeasyPrint renders the final HTML/CSS report into a pixel-perfect PDF.
-    
+Just:
 
-4\. Tech Stack
---------------
+```
+User: "I’m freezing today."  
+Bot → “There’s a Starbucks 50m away — your favorite caramel latte is in stock, and there’s a 10% discount today. Want it?”
+```
 
-*   **Language:** Python 3.11
-    
-*   **Data Engine:** Polars (Rust-based DataFrame library)
-    
-*   **Machine Learning:** Scikit-Learn (Isolation Forest)
-    
-*   **AI Model:** Google Gemini 1.5 Pro (via Vertex AI)
-    
-*   **Orchestration:** Docker & Docker Compose
-    
-*   **Visualization:** Plotly & WeasyPrint
-    
+**For Store Owners:**
 
-5\. Challenges & Learnings
---------------------------
+* One-time dataset upload (inventory + offers + metadata)
+* System learns customer behavior automatically over time
+* No manual re-training or schema work during usage
 
-_This project wasn't easy. Here are two major hurdles I overcame:_
+---
 
-**Challenge 1: AI Hallucinations**
+## 3️⃣ Technical Approach
 
-*   **Issue:** Initially, the AI would invent reasons for data drops (e.g., claiming "It rained" when I provided no weather data).
-    
-*   **Solution:** I implemented a **"Strict Context" System Prompt**. I effectively told the AI: _"Only use the data provided in the JSON context. If you don't know, say 'Unknown'."_ This reduced hallucination rates significantly.
-    
+The system combines:
 
-**Challenge 2: Docker Networking**
+* **Static store knowledge** (menu, pricing, offers, stock)
+* **Dynamic customer signals** (preferences, repeated patterns, emotional tone)
+* **External context** (location, weather)
+* **LLM-based reasoning** for natural conversation
 
-*   **Issue:** My Python container couldn't send emails out to the SMTP server.
-    
-*   **Solution:** I learned about Docker Networks and container isolation. I had to configure the SMTP ports and environment variables correctly in the docker-compose.yml to allow external traffic.
-    
+### 🧩 System Intelligence Pipeline
 
-6\. Visual Proof
-----------------
+```
+🗣 User Message
+        ↓
+[1] Intent Detection
+        ↓
+[2] Context Gathering:
+      - User memory (dynamic)
+      - Store DB (static)
+      - Location + Weather APIs (dynamic external)
+        ↓
+[3] Decision Engine
+    (ranking + scoring logic)
+        ↓
+[4] LLM Response Generation
+        ↓
+[5] Memory Update (only if new useful info detected)
+        ↓
+💬 Reply to User
+```
 
-**Anomaly Detected (Terminal)**
+---
 
-**Final Report (PDF)**
+### How It Works Under the Hood
 
-_Terminal showing Isolation Forest detecting outliers_
+1. **Intent Engine:**
+   Extracts meaning from user messages (e.g., *“cold” → comfort drink intent*).
 
-_Final Output sent to client via Email_
+2. **Context Fusion:**
+   Combines:
 
-7\. How to Run
---------------
+   * User purchase history
+   * Inventory availability
+   * Offers
+   * Geolocation
+   * Weather data
 
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   # 1. Clone Repository  git clone [https://github.com/username/trendspotter.git](https://github.com/username/trendspotter.git)  # 2. Add API Key  export GEMINI_API_KEY="your_key_here"  # 3. Build & Run Container  docker-compose up --build  # 4. Test  # Move the sample.csv to the input folder to trigger the pipeline  mv data/sample.csv data/input/   `
+3. **Decision Engine:**
+   A scoring system selects the optimal recommendation based on patterns, behavioral signals, and environmental cues.
 
+4. **Generative Layer:**
+   The selected reasoning context is passed to **Gemini or Groq**, which generates a natural conversational response — not just a raw database fact dump.
 
+5. **Memory Update:**
+   If the user reveals new preference or behavioral insight, it's parsed via an LLM classifier and stored in MongoDB.
+
+---
+
+## 4️⃣ Tech Stack
+
+| Layer                    | Technology                               |
+| ------------------------ | ---------------------------------------- |
+| Language                 | Python                                   |
+| AI Models                | Gemini 2.5 or Groq Llama                 |
+| Database                 | MongoDB Atlas                            |
+| Vector Search (Optional) | MongoDB Atlas Vector Index               |
+| Weather + Geo            | OpenWeather API + Browser Geolocation    |
+| Frontend                 | Gradio (demo) / Flutter (mobile version) |
+
+---
+
+## 5️⃣ Challenges & Learnings
+
+🔹 **Challenge: Context Overload**
+LLMs hallucinate when given raw database dumps.
+
+**Solution:** Build a structured JSON prompt with relevant items only (top-ranked by scoring engine).
+
+---
+
+🔹 **Challenge: Long-Term Personalization Without Noise**
+
+Blindly storing full chat logs leads to garbage memory.
+
+**Solution:** An extraction pipeline classifies messages into:
+
+```json
+{
+  "likes": [],
+  "dislikes": [],
+  "patterns": [],
+  "intent": null,
+  "contextual_state": null
+}
+```
+
+Only meaningful signals persist.
+
+---
+
+## 6️⃣ Demo Screenshots (To Be Added)
+
+* 📍 Location-aware recommendations
+* 🧠 Memory-based personalized suggestion
+* 🎯 Offer-optimized fallback behavior
+
+---
