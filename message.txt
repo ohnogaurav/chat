@@ -1,1 +1,20 @@
+<<<<<<< HEAD
+https://github.com/GTHackathon/DemoRepository
+=======
+.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+
+.\bin\windows\kafka-server-start.bat .\config\server.properties
+
+
+
+
+done
+
+waaaah
+>>>>>>> a0acf5e8c393acb6f2c475f90166d72b3826c4ec
+
+
+
+
 https://github.com/GTHackathon/DemoRepository
