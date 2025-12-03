@@ -18,3 +18,11 @@ waaaah
 
 
 https://github.com/GTHackathon/DemoRepository
+
+
+
+#MangoDB id pass of the cluster
+id---> sagarsinghatwork_db_user
+pass ---> o4sLxxoSmNdRhIZb
+
+
